@@ -7,7 +7,7 @@ type rateProps = {
 }
 
 function AccordionRate(props: rateProps) {
-  console.log('AccordionRate are rendering ')
+
   return (
     <div>
       <Star selected={props.value > 0} />

@@ -1,6 +1,7 @@
 
 type AccordionTitleType = {
   title: string
+  callBack?: () => void
 }
 
 function AccordionTitle(props: AccordionTitleType) {
@@ -10,7 +11,7 @@ function AccordionTitle(props: AccordionTitleType) {
 
   //  } )onClick={clickButton}
   return (<div>
-    <button>{props.title}</button >
+    <button onClick={props.callBack}>{props.title}</button >
   </div>)
 }
 
