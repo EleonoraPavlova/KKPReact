@@ -4,44 +4,25 @@ import Star from "../components/Star"
 
 function UnControlledAccordionRate() {
 
-  let [value, setValue] = useState(0)
-  let [isSelected, setIsSelected] = useState(false)
+  let [value, setValue] = useState<number | null>(null)
+  console.log(value)
 
-  const setValueHandler = () => {
-    switch (value) {
-      case (0): {
-        setValue(1)
-        return setIsSelected(!isSelected)
-      }
-      case (1): {
-        setValue(2)
-        return setIsSelected(!isSelected)
-      }
-      case (2): {
-        setValue(3)
-        return setIsSelected(!isSelected)
-      }
-      case (3): {
-        setValue(4)
-        return setIsSelected(!isSelected)
-      }
-      case (4): {
-        setValue(5)
-        return setIsSelected(!isSelected)
-      }
-      default: setIsSelected(!isSelected)
+  const setValueHandler = (number: number) => {
+    if (number === value) {
+      setValue(null)
+    } else {
+      setValue(number)
     }
+  }
 
+  const mappedStar = () => {
+    return Array(5).fill(0).map((unused, index) => index + 1).map((number) => {
+      return <Star key={number} selected={value && value > number ? true : false} callBack={() => { setValueHandler(number + 1) }} />
+    })
   }
 
   return (
-    <div>
-      <Star selected={value > 0} callBack={setValueHandler} />
-      <Star selected={value > 1} callBack={setValueHandler} />
-      <Star selected={value > 2} callBack={setValueHandler} />
-      <Star selected={value > 3} callBack={setValueHandler} />
-      <Star selected={value > 4} callBack={setValueHandler} />
-    </div>
+    <div className="star">{mappedStar()} </div>
   );
 }
 

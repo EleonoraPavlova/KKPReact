@@ -1,7 +1,7 @@
 
 export type OnOffProps = {
-  isSwitched: boolean | null;
-  switchButton: (arg: boolean) => void;
+  isClick: boolean | null;
+  setIsClick: (value: boolean) => void;
 }
 
 export type switchType = "On" | "Off"
@@ -9,18 +9,17 @@ export type switchType = "On" | "Off"
 function OnOff(props: OnOffProps) {
 
   const getCircleClass = () => {
-    if (props.isSwitched === null) {
+    if (props.isClick === null) {
       return ""
     }
-    return props.isSwitched ? "green" : "red"
+    return props.isClick ? "green" : "red"
   }
-
 
   return (
     <div className="OnOff">
       <div>
-        <button className={props.isSwitched ? "green" : ""} onClick={() => props.switchButton(true)}>On</button>
-        <button className={props.isSwitched === false ? "red" : ""} onClick={() => props.switchButton(false)}>Off</button>
+        <button className={props.isClick ? "green" : ""} onClick={() => props.setIsClick(true)}>On</button>
+        <button className={props.isClick === false ? "red" : ""} onClick={() => props.setIsClick(false)}>Off</button>
       </div>
       <div className={`circle ${getCircleClass()}`}></div>
     </div >

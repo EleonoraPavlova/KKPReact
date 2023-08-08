@@ -6,12 +6,18 @@ import AccordionTitle from "./AccordionTitle"
 export type AccordionProps = {
   title: string
   collapsed: boolean
+  setAccordionCollapsed: (value: boolean) => void // аргумент обязательно, что ожидает изменение useState!
 }
 
 function Accordion(props: AccordionProps) {
+
+  const setAccordionCollapsedHandle = () => {
+    props.setAccordionCollapsed(!props.collapsed)
+  }
+
   return (
     <div>
-      <AccordionTitle title={props.title} />
+      <AccordionTitle title={props.title} callBack={setAccordionCollapsedHandle} />
       {props.collapsed && <div>
         < AccordionBody />
         < AccordionRate value={0} />

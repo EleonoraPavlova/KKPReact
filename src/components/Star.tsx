@@ -1,15 +1,14 @@
-type StarPropsType = {
-  selected: boolean;
+export type StarPropsType = {
+  selected?: boolean;
   callBack?: () => void;
 }
 
+
 function Star(props: StarPropsType) {
 
-  if (props.selected === true) {
-    return <button onClick={props.callBack}><b> star </b></button>
-  } else {
-    return <button onClick={props.callBack}> star </button>
-  }
+  return (<button onClick={props.callBack}>
+    {props.selected ? <b> Star </b> : " Star "}
+  </button>)
 }
 
 export default Star;
