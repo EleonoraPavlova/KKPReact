@@ -17,11 +17,15 @@ function UnControlledOnOff() {
     return isClick ? "green" : "red"
   }
 
+  const setIsClickHandler = () => {
+    setIsClick(!isClick)
+  }
+
   return (
     <div className="OnOff">
       <div>
-        <button className={isClick ? "green" : ""} onClick={() => setIsClick(true)}>On</button>
-        <button className={isClick === false ? "red" : ""} onClick={() => setIsClick(false)}>Off</button>
+        <button className={isClick ? "green" : ""} onClick={setIsClickHandler}>On</button>
+        <button className={isClick === false ? "red" : ""} onClick={setIsClickHandler}>Off</button>
       </div>
       <div className={`circle ${getCircleClass()}`}></div>
     </div >

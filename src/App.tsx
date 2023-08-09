@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; //KKPReact
 import './App.css';
-// import Accordion from "./components/accordion/Accordion";
+import Accordion from "./components/accordion/Accordion";
 // import ButtonSwitch from "./components/buttonSwitch";
 // import UnControlledAccordion from "./components/UnControlledAccordion";
 // import UnControlledAccordionRate from "./components/UncontrolledAccordionRate";
@@ -20,7 +20,9 @@ function App() {
   return (
     <div className="App">
       {/* <PageTitle title={'This is App Title'} /> */}
-      {/* <Accordion title={"This is Accordion Title One"} collapsed={accordionCollapsed} setAccordionCollapsed={setAccordionCollapsed} /> */}
+      {/* <Accordion title={"This is Accordion Title One"}
+        collapsed={accordionCollapsed}
+        setAccordionCollapsed={setAccordionCollapsed} /> */}
       {/* <UnControlledAccordion title={"One accordion"} /> */}
       {/* <UnControlledAccordionRate />
       <UnControlledAccordionRate />
