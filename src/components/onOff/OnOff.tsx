@@ -1,3 +1,5 @@
+import "../../App.css"
+
 
 export type OnOffProps = {
   isClick: boolean | null;
@@ -6,7 +8,7 @@ export type OnOffProps = {
 
 export type switchType = "On" | "Off"
 
-function OnOff(props: OnOffProps) {
+export function OnOff(props: OnOffProps) {
 
   const getCircleClass = () => {
     if (props.isClick === null) {
@@ -25,5 +27,3 @@ function OnOff(props: OnOffProps) {
     </div >
   );
 }
-
-export default OnOff;

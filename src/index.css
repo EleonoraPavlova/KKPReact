@@ -15,36 +15,3 @@ code {
 #root {
   margin-left: 15%;
 }
-
-button {
-  background-color: transparent;
-  border: 1px solid gray;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 5px;
-  margin: 10px;
-}
-
-.show {
-  display: block;
-}
-
-.hidden {
-  overflow: hidden;
-}
-
-.circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid gray;
-  margin: 15px;
-}
-
-.green {
-  background-color: greenyellow;
-}
-
-.red {
-  background-color: red;
-}

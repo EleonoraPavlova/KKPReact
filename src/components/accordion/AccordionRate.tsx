@@ -1,8 +1,9 @@
 import React from 'react';
 import Star from "../Star"
 
-type rateProps = {
+export type rateProps = {
   value: number
+  onClick?: () => void
   // value: 0 | 1 | 2 | 3 | 4 | 5  or so, what I'm waiting strict
 }
 
