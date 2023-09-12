@@ -19,13 +19,16 @@ const cities = [
 
 export const SelectTest = () => {
   const [city, setCity] = useState<string>("")
-  const onChangeHandler = (v: string) => {
-    setCity(v)
+
+  const onChangeHandler = (title: string) => {
+    setCity(title)
   }
 
 
-  return <> <SelectComponent value={city} onChange={onChangeHandler}
-    selectItems={cities}
-  />
+  return <>
+    <SelectComponent value={city} onChange={onChangeHandler}
+      selectItems={cities}
+    />
+    <div>{city}</div>
   </>
 }

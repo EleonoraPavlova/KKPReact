@@ -3,7 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
 
 export type SelectItemType = {
@@ -14,22 +14,24 @@ export type SelectItemType = {
 export type SelectPropsType = {
   value: string
   selectItems: SelectItemType[]
-  onChange: (v: string) => void
+  onChange: (title: string) => void
 }
 
 
 function SelectComponent(props: SelectPropsType) {
   const mappedItem = () => {
     if (props.selectItems) {
-      return props.selectItems.map((i, index) => <MenuItem key={index} value={index}> {i.title}  {i.value}</MenuItem >)
+      return props.selectItems.map((i, index) => <MenuItem key={index} value={i.title}> {i.title}  {i.value}</MenuItem >)
     }
   }
 
   const onChangeHandler = (e: SelectChangeEvent) => {
     props.onChange(e.target.value)
+
   }
 
-  const currentCity = props.selectItems.filter((i) => i.value === props.value)
+
+  const currentCity = props.selectItems.filter((i) => i.value === props.value && i.value !== "")
 
 
   return (<>
@@ -46,7 +48,7 @@ function SelectComponent(props: SelectPropsType) {
       </Select>
     </FormControl>
     {currentCity.length > 0 &&
-      <Box>{currentCity[0].title}</Box>
+      <Box component="span" sx={{ p: 2, border: '1px dashed grey', padding: 4 }}>{currentCity[0].title}</Box >
     }
   </>
   );
