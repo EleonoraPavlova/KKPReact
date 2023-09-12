@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Box from '@mui/material/Box';
+import { ChangeEvent } from "react";
 
 
 export type SelectItemType = {
@@ -14,7 +15,7 @@ export type SelectItemType = {
 export type SelectPropsType = {
   value: string
   selectItems: SelectItemType[]
-  onChange: (title: string) => void
+  onChange: (e: string) => void
 }
 
 
@@ -25,14 +26,9 @@ function SelectComponent(props: SelectPropsType) {
     }
   }
 
-  const onChangeHandler = (e: SelectChangeEvent) => {
+  const onChangeHandler = (e: SelectChangeEvent<string>) => {
     props.onChange(e.target.value)
-
   }
-
-
-  const currentCity = props.selectItems.filter((i) => i.value === props.value && i.value !== "")
-
 
   return (<>
     <FormControl variant={"outlined"} sx={{ m: 1, minWidth: 120 }}>
@@ -47,8 +43,15 @@ function SelectComponent(props: SelectPropsType) {
         {mappedItem()}
       </Select>
     </FormControl>
-    {currentCity.length > 0 &&
-      <Box component="span" sx={{ p: 2, border: '1px dashed grey', padding: 4 }}>{currentCity[0].title}</Box >
+    {props.value !== "None" && props.value &&
+      <Box component="div" sx={{
+        width: "150px",
+        height: "50px",
+        border: '1px dashed grey',
+        padding: "10px",
+        textAlign: "center",
+        fontSize: "23px"
+      }}>{props.value}</Box >
     }
   </>
   );

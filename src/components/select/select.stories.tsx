@@ -24,11 +24,8 @@ export const SelectTest = () => {
     setCity(title)
   }
 
-
   return <>
     <SelectComponent value={city} onChange={onChangeHandler}
-      selectItems={cities}
-    />
-    <div>{city}</div>
+      selectItems={cities} />
   </>
 }
