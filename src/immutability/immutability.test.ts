@@ -16,7 +16,7 @@ import {
   withCompaniesType
 } from "./immutability";
 
-//НЕ НУЖНОГ ДЕЛАТЬ КОПИЮ ТОГО, ЧТО МЫ НЕ МЕНЯЕМ!
+//НЕ НУЖНО ДЕЛАТЬ КОПИЮ ТОГО, ЧТО МЫ НЕ МЕНЯЕМ!
 
 
 test("reference type test", () => {

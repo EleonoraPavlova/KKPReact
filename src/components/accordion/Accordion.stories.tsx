@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
-import { action } from "@storybook/addon-actions"
 import Accordion from "./Accordion"
+import { action } from "@storybook/addon-actions";
 
 
 export default {
@@ -10,12 +10,27 @@ export default {
 }
 
 
-export const AccordionTrue = () => < Accordion title={"Title Accordion"} collapsed={false} setAccordionCollapsed={(value) => alert(value)} />
-export const AccordionFalse = () => < Accordion title={"Title Accordion2"} collapsed={true} setAccordionCollapsed={(value) => alert(value)} />
+const callBack = action("accordion mode change event fired")
+const onClickCallBack = action("some item was clicked")
+
+export const AccordionTrue = () => < Accordion items={[{ title: "Eleonora", value: "1" }, { title: "Andre", value: "2" }, { title: "Tamara", value: "3" }]}
+  onClick={onClickCallBack} title={"Title Accordion"} collapsed={false} setAccordionCollapsed={(value) => alert(value)} />
+
+export const AccordionFalse = () => < Accordion items={[]}
+  title={"Title Accordion2"} onClick={onClickCallBack} collapsed={true} setAccordionCollapsed={(value) => alert(value)} />
 
 
 export const AccordionTestChanging = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false)
 
-  return <Accordion title={"Title"} collapsed={collapsed} setAccordionCollapsed={setCollapsed} />
+  return <Accordion
+    items={
+      [{ title: "Eleonora", value: "1" },
+      { title: "Andre", value: "2" },
+      { title: "Tamara", value: "3" }]
+    }
+    onClick={(value) => { alert(`user with this ${value} should be happy`) }}
+    title={"Title"}
+    collapsed={collapsed}
+    setAccordionCollapsed={setCollapsed} />
 }
