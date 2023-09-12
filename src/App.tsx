@@ -1,10 +1,12 @@
-import React, { useState } from 'react'; //KKPReact
+import React, { ChangeEvent, useState } from 'react'; //KKPReact
 import './App.css';
 import Accordion from "./components/accordion/Accordion";
 // import ButtonSwitch from "./components/buttonSwitch";
 // import UnControlledAccordion from "./components/UnControlledAccordion";
 // import UnControlledAccordionRate from "./components/UncontrolledAccordionRate";
 import UnControlledOnOff from "./UnControlledOnOff/UnControlledOnOff";
+import SelectComponent from "./components/select/SelectComponent";
+import { SelectChangeEvent } from "@mui/material";
 // import Star, { StarValueType } from "./components/Star";
 // import OnOff from "./components/onOff/OnOff";
 
@@ -16,6 +18,11 @@ function App() {
   // let [isClick, setIsClick] = useState<boolean | null>(null)
   // let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
 
+  // const [city, setCity] = useState<string>("2")
+  // // debugger
+  // const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   setCity(e.currentTarget.value)
+  // }
 
   return (
     <div className="App">
@@ -31,6 +38,8 @@ function App() {
       {/* <ButtonSwitch /> */}
       {/* <OnOff setIsClick={setIsClick} isClick={isClick} /> */}
       < UnControlledOnOff />
+      {/* <SelectComponent value={city} selectItems={[{ title: "Manchester", value: 1 }, { title: "Cambridge", value: 2 }, { title: "Oxford", value: 3 }, { title: "Liverpool", value: 4 }, { title: "St. Davids", value: 5 }]}
+        setCity={() => onChangeHandler} /> */}
       {/* <Star value={starValue} callBack={setStarValue} />
       <Star value={starValue} />
       <Star value={starValue} /> */}

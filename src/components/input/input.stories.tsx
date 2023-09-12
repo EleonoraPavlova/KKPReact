@@ -11,6 +11,7 @@ export const UncontrolledInput = () => < input />
 //с onChange event - выводим значение input рядом с окошком input
 export const TrackValueOfUncontrolledInput = () => {
   const [value, setValue] = useState("")
+
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const actualValue = e.currentTarget.value
     setValue(actualValue)
