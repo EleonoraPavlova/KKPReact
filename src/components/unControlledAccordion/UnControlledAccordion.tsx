@@ -1,8 +1,8 @@
-import AccordionRate from "./accordion/AccordionRate"
-import AccordionBody from "./accordion/AccordionBody"
-import AccordionTitle from "./accordion/AccordionTitle"
+import AccordionRate from "../accordion/AccordionRate"
+import AccordionBody from "../accordion/AccordionBody"
+import AccordionTitle from "../accordion/AccordionTitle"
 import { useState } from "react"
-import { ItemType } from "./accordion/Accordion"
+import { ItemType } from "../accordion/Accordion"
 
 export type AccordionProps = {
   title: string

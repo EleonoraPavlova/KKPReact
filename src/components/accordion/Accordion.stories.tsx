@@ -10,7 +10,6 @@ export default {
 }
 
 
-const callBack = action("accordion mode change event fired")
 const onClickCallBack = action("some item was clicked")
 
 export const AccordionTrue = () => < Accordion items={[{ title: "Eleonora", value: "1" }, { title: "Andre", value: "2" }, { title: "Tamara", value: "3" }]}

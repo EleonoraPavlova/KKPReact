@@ -3,7 +3,6 @@ export type StarPropsType = {
   callBack?: () => void;
 }
 
-
 function Star(props: StarPropsType) {
 
   return (<button onClick={props.callBack}>
