@@ -26,7 +26,8 @@ const items =
   }]
 
 export const UnControlledAccordionTest = () => {
-  return <UnControlledAccordion title="Test Title" items={items} onClick={function (value: any): void {
-    throw new Error("Function not implemented.");
-  }} />
+
+  const callBack = action("was onClick here")
+  return <UnControlledAccordion title="Test Title" items={items} onClick={callBack}
+  />
 }
