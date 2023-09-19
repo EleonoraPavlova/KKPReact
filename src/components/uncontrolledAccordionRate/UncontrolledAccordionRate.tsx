@@ -7,6 +7,7 @@ export type UnControlledAccordionRateType = {
   onChange: (value: number) => void
 }
 
+const StarMemo = React.memo(Star)
 
 function UnControlledAccordionRate(props: UnControlledAccordionRateType) {
   let [value, setValue] = useState<number | null>(props.defaultValue ? props.defaultValue : null)
@@ -22,7 +23,7 @@ function UnControlledAccordionRate(props: UnControlledAccordionRateType) {
 
   const mappedStar = () => {
     return Array(5).fill(0).map((unused, index) => index + 1).map((number) => {
-      return <Star key={number} selected={value && value > number ? true : false} callBack={() => { setValueHandler(number + 1); props.onChange(number) }} />
+      return <StarMemo key={number} selected={value && value > number ? true : false} callBack={() => { setValueHandler(number + 1); props.onChange(number) }} />
     })
   }
 

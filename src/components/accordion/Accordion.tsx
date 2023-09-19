@@ -1,6 +1,7 @@
 import AccordionRate from "./AccordionRate"
 import AccordionBody from "./AccordionBody"
 import AccordionTitle from "./AccordionTitle"
+import React from "react"
 
 export type ItemType = {
   title: string
@@ -15,6 +16,9 @@ export type AccordionProps = {
   setAccordionCollapsed: (value: boolean) => void // аргумент обязательно, что ожидает изменение useState!
 }
 
+const AccordionBodyMemo = React.memo(AccordionBody)
+const AccordionTitleMemo = React.memo(AccordionTitle)
+
 function Accordion(props: AccordionProps) {
 
   const onChangeHandler = () => {
@@ -23,9 +27,9 @@ function Accordion(props: AccordionProps) {
 
   return (
     <div>
-      <AccordionTitle title={props.title} callBack={onChangeHandler} />
+      <AccordionTitleMemo title={props.title} callBack={onChangeHandler} />
       {props.collapsed && <div>
-        < AccordionBody items={props.items} onClick={props.onClick} />
+        < AccordionBodyMemo items={props.items} onClick={props.onClick} />
         < AccordionRate value={0} />
         < AccordionRate value={1} />
         < AccordionRate value={2} />

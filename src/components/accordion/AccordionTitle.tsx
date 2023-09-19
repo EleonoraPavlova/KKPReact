@@ -5,6 +5,7 @@ type AccordionTitleType = {
 }
 
 function AccordionTitle(props: AccordionTitleType) {
+  console.log("AccordionTitleMemo")
   return (<div>
     <button onClick={props.callBack}>{props.title}</button >
   </div>)

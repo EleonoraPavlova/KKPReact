@@ -6,8 +6,8 @@ export type AccordionBodyProps = {
   onClick: (value: any) => void
 }
 
-
 function AccordionBody(props: AccordionBodyProps) {
+  console.log("AccordionBodyMemo")
   return (
     <div>
       <ul>
