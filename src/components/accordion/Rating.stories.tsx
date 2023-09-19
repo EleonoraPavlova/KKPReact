@@ -2,7 +2,7 @@
 import { useState } from "react";
 import AccordionRate from "./AccordionRate";
 import React from "react";
-
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "AccordionRate",
@@ -24,6 +24,11 @@ export const EmptyStars4 = () => < AccordionRate value={4} />
 export const ChangeStars = () => {
   const [rating, setRating] = useState<number>(0)
 
-  return < AccordionRateMemo value={rating} onClick={() => setRating(rating)} />
+  const callBackHandler = (value: number) => {
+    setRating(value)
+    return action('stars were changed')
+  }
+
+  return <AccordionRate value={rating} callBack={callBackHandler} />
 }
 
