@@ -1,7 +1,6 @@
 
-import { useState } from "react";
 import AccordionRate from "./AccordionRate";
-import React from "react";
+import React, { useState } from "react";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -29,6 +28,6 @@ export const ChangeStars = () => {
     return action('stars were changed')
   }
 
-  return <AccordionRate value={rating} callBack={callBackHandler} />
+  return <AccordionRateMemo value={rating} callBack={callBackHandler} />
 }
 

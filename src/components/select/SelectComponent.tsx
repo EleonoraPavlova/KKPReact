@@ -11,9 +11,17 @@ export type SelectItemType = {
   value: string
 }
 
+export type citiesType = {
+  id: string
+  city: string
+  population: number
+  region: number
+}
+
 export type SelectPropsType = {
   value: string
-  selectItems: SelectItemType[]
+  selectItems?: SelectItemType[]
+  cities?: citiesType[]
   onChange: (e: string) => void
 }
 
@@ -23,7 +31,11 @@ function SelectComponent(props: SelectPropsType) {
     if (props.selectItems) {
       return props.selectItems.map((i, index) => <MenuItem key={index} value={i.title}> {i.title}  {i.value}</MenuItem >)
     }
+    if (props.cities) {
+      return props.cities.filter((c, index) => <MenuItem key={index} value={c.region}> {c.region}  {c.region}</MenuItem >)
+    }
   }
+
 
   const onChangeHandler = (e: SelectChangeEvent<string>) => {
     props.onChange(e.target.value)

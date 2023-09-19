@@ -5,7 +5,7 @@ export default {
   title: "React.memo demo"
 }
 
-type UsersType = {
+export type UsersType = {
   users: string[]
 }
 type CounterType = {
