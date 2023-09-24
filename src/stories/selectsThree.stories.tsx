@@ -37,7 +37,7 @@ const cities: citiesType[] = [
 ]
 
 
-export const SelectsMemo = () => {
+export const SelectsThree = () => {
   console.log("SelectsMemo")
 
   const [counter, setCounter] = useState(0)
@@ -68,12 +68,7 @@ export const SelectsMemo = () => {
   useEffect(() => {
     if (activeFilter) {
       const filteredCities = citiesFilters(activeFilter);
-      // if (filteredCities) {
       setDrawCities(filteredCities);
-      // debugger
-      // } else {
-      //   setDrawCities(cities)
-      // }
     }
   }, [activeFilter, m, region, population])
 
@@ -92,10 +87,6 @@ export const SelectsMemo = () => {
       return cities.filter((c: citiesType) => c.city.toLocaleLowerCase().includes("m"))
     }
     if (name === 'region') {
-
-      // let result = Array.from(new Set(cities.map(c => c.region)))
-      // debugger
-      // return result
       return [...cities].sort((a, b) => a.region - b.region).filter(p => p.region === region)
     }
     if (name === 'population' && population) {
@@ -104,18 +95,21 @@ export const SelectsMemo = () => {
     return cities
   }
 
+  const searchUniqueRegions = () => {
+    return cities.reduce<{ id: string; region: regionType }[]>((acc, curr) => {
+      if (!acc.some(item => item.region === curr.region)) {
+        acc.push({ id: curr.id, region: curr.region });
+      }
+      return acc;
+    }, []);
+  }
+
   const itemsRenderInSelect = (name: ActiveFilterType) => {
     if (name === "city") {
       return citiesFilters(name).map(c => <MenuItem key={c.id} value={c.city} > City: {c.city} </MenuItem >)
     }
     if (name === "region") {
-      const uniqueRegions = cities.reduce<{ id: string; region: regionType }[]>((acc, curr) => {
-        if (!acc.some(item => item.region === curr.region)) {
-          acc.push({ id: curr.id, region: curr.region });
-        }
-        return acc;
-      }, []);
-      return uniqueRegions.map(c => <MenuItem key={c.id} value={c.region} > Region:  {c.region} </MenuItem >)
+      return searchUniqueRegions().map(c => <MenuItem key={c.id} value={c.region} > Region:  {c.region} </MenuItem >)
     }
     if (name === "population") {
       return cities.map(c => <MenuItem key={c.id} value={c.population} > Population :  {c.population} </MenuItem >)
