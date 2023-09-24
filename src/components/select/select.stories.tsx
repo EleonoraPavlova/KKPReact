@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SelectComponent from "./SelectComponent";
 import { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import { citiesType } from "../../stories/selectsUseMemo.stories";
+import { citiesType } from "../../stories/selectsThree.stories";
 
 export default {
   title: "Select",
