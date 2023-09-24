@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import SelectComponent from "../components/select/SelectComponent";
 import { v1 } from "uuid";
 import Box from "@mui/system/Box";
 import Button from "@mui/material/Button";
 import { SelectChangeEvent } from "@mui/material";
 import MenuItem from '@mui/material/MenuItem';
+
+//Select не пересировывается лишние разы!
 
 export default {
   title: "SelectsThree",
@@ -38,9 +40,8 @@ const cities: citiesType[] = [
 const SelectComponentMemo = React.memo(SelectComponent) //не перезапускает перерендер, если не произошло изменений!
 
 
-
 export const SelectsThree = () => {
-  console.log("SelectsMemo")
+  console.log("SelectsThree")
 
   const [counter, setCounter] = useState(0)
   const [m, setM] = useState<string>("")
@@ -51,20 +52,20 @@ export const SelectsThree = () => {
   const [drawCities, setDrawCities] = useState<citiesType[]>(cities)
 
 
-  const onChangeHandlerCity = (e: SelectChangeEvent<string>) => {
+  const onChangeHandlerCity = useCallback((e: SelectChangeEvent<string>) => {
     setM(e.target.value)
     setActiveFilter('city')
-  }
+  }, [])
 
-  const onChangeHandlerPopulation = (e: SelectChangeEvent<string>) => {
+  const onChangeHandlerPopulation = useCallback((e: SelectChangeEvent<string>) => {
     setPopulation(+e.target.value)
     setActiveFilter('population')
-  }
+  }, [])
 
-  const onChangeHandlerRegion = (e: SelectChangeEvent<string>) => {
+  const onChangeHandlerRegion = useCallback((e: SelectChangeEvent<string>) => {
     setRegion(+e.target.value)
     setActiveFilter('region')
-  }
+  }, [])
 
 
   useEffect(() => {
@@ -74,17 +75,17 @@ export const SelectsThree = () => {
     }
   }, [activeFilter, m, region, population])
 
-  const mappedCities = () => {
+  const mappedCities = useMemo(() => {
+
     return drawCities.map(c => <MenuItem key={c.id} value={c.city} >
       <Box sx={{ paddingRight: "12px" }}><strong>Id: </strong>  {c.id}</Box>
       <Box sx={{ paddingRight: "12px" }}><strong>City:</strong>  {c.city}</Box>
       <Box sx={{ paddingRight: "12px" }}><strong>Population:</strong>  {c.population}</Box>
       <Box sx={{ paddingRight: "12px" }}><strong>Region:</strong>  {c.region}</Box>
     </MenuItem >)
-  }
+  }, [drawCities])
 
-
-  const citiesFilters = (name: ActiveFilterType): citiesType[] => {
+  const citiesFilters = useCallback((name: ActiveFilterType): citiesType[] => {
     if (name === "city") {
       return cities.filter((c: citiesType) => c.city.toLocaleLowerCase().includes("m"))
     }
@@ -95,7 +96,7 @@ export const SelectsThree = () => {
       return [...cities].sort((a, b) => a.population - b.population).filter(p => p.population >= population)
     }
     return cities
-  }
+  }, [cities, activeFilter])
 
   const searchUniqueRegions = () => {
     return cities.reduce<{ id: string; region: regionType }[]>((acc, curr) => {
@@ -106,7 +107,7 @@ export const SelectsThree = () => {
     }, []);
   }
 
-  const itemsRenderInSelect = (name: ActiveFilterType) => {
+  const itemsRenderInSelect = useCallback((name: ActiveFilterType) => {
     if (name === "city") {
       return citiesFilters(name).map(c => <MenuItem key={c.id} value={c.city} > City: {c.city} </MenuItem >)
     }
@@ -116,7 +117,7 @@ export const SelectsThree = () => {
     if (name === "population") {
       return cities.map(c => <MenuItem key={c.id} value={c.population} > Population :  {c.population} </MenuItem >)
     }
-  }
+  }, [])
 
 
   return (
@@ -125,18 +126,20 @@ export const SelectsThree = () => {
         <Button variant="outlined" color="success" onClick={() => setCounter(counter + 1)} sx={{ margin: "5px" }} >+</Button>
         {counter}
       </Box >
-      <Box sx={{ p: "10px" }}> All cities: {mappedCities().length} {mappedCities()} </Box>
+      <Box sx={{ p: "10px" }}>
+        All cities: {mappedCities.length} {mappedCities}
+      </Box>
       <Box sx={{ display: "flex", alignItems: "center", margin: "10px" }}>
         <SelectComponentMemo value={m} onChange={onChangeHandlerCity} label="hasMletter"
-          name="city" items={itemsRenderInSelect("city")} />
+          name="city" itemsRenderInSelect={itemsRenderInSelect} />
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", margin: "10px" }}>
         <SelectComponentMemo value={population ? population.toString() : ""} onChange={onChangeHandlerPopulation} label="population"
-          name="population" items={itemsRenderInSelect("population")} />
+          name="population" itemsRenderInSelect={itemsRenderInSelect} />
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", margin: "10px" }}>
         <SelectComponentMemo value={region ? region.toString() : ""} onChange={onChangeHandlerRegion} label="region"
-          name="region" items={itemsRenderInSelect("region")} />
+          name="region" itemsRenderInSelect={itemsRenderInSelect} />
       </Box>
     </>
   )

@@ -11,13 +11,17 @@ export type SelectPropsType = {
   value: string
   label: string
   name: selectLabel
-  items: React.ReactNode[] | undefined //принимает 2 вида массивов
+  itemsRenderInSelect: (name: selectLabel) => React.ReactNode
+  // items: React.ReactNode[] | undefined //принимает 2 вида массивов
   onChange: (e: SelectChangeEvent<string>) => void
 }
 
 
 function SelectComponent(props: SelectPropsType) {
-  console.log("SelectComponentMemo")
+  console.log("SelectComponent")
+
+  const items = props.itemsRenderInSelect(props.name)
+
   return (<>
     <FormControl variant={"outlined"} sx={{ m: 1, minWidth: 160 }}>
       <InputLabel id="demo-simple-select-autowidth-label">{props.label}</InputLabel>
@@ -29,7 +33,7 @@ function SelectComponent(props: SelectPropsType) {
         onChange={props.onChange}
         label="demo-simple-select-autowidth"
       >
-        {props.items}
+        {items}
       </Select>
     </FormControl>
     {(props.value !== "None" && props.value !== "All") && props.value &&

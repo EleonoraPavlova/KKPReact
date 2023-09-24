@@ -34,11 +34,13 @@ export const SelectTest = () => {
     setCity(e.target.value)
   }
 
-  const itemsCity = cities.map((i, index) => <MenuItem key={index} value={i.title}> {i.title}  {i.value}</MenuItem >)
+  const itemsCity = () => {
+    return cities.map((i, index) => <MenuItem key={index} value={i.title}> {i.title}  {i.value}</MenuItem >)
+  }
 
 
   return <>
     <SelectComponent value={city} onChange={onChangeHandler}
-      name="city" label="city" items={itemsCity} />
+      name="city" label="city" itemsRenderInSelect={itemsCity} />
   </>
 }

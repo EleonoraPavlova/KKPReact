@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 export default {
   title: "useCallBackComponent",
@@ -18,7 +18,7 @@ const BooksSecret = (props: BooksSecretType) => {
 }
 
 const Books = React.memo(BooksSecret) //не перезапускает перерендер КОМПОНЕНТЫ,
-// если не произошло изменений!
+// если не произошло изменений! писать всегда для использов useMemo/useCallback
 
 export const useCallBackRender = () => {
   console.log("useCallBack")
