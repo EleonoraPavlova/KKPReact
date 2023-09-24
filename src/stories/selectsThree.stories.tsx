@@ -7,7 +7,7 @@ import { SelectChangeEvent } from "@mui/material";
 import MenuItem from '@mui/material/MenuItem';
 
 export default {
-  title: "SelectUseMemo",
+  title: "SelectsThree",
   component: SelectComponent,
 }
 
