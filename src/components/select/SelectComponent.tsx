@@ -17,6 +17,7 @@ export type SelectPropsType = {
 
 
 function SelectComponent(props: SelectPropsType) {
+  console.log("SelectComponentMemo")
   return (<>
     <FormControl variant={"outlined"} sx={{ m: 1, minWidth: 160 }}>
       <InputLabel id="demo-simple-select-autowidth-label">{props.label}</InputLabel>

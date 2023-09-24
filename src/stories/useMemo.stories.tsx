@@ -70,7 +70,6 @@ export const HelpsToReactMemo = () => {
   //[users] - обязательно! потому что фильтрация завичит от users!
   // без зависимости  отрисоввка массива не будет обновляться!
 
-
   const addUser = () => {
     setUsers([...users, "Sveta " + new Date().getFullYear()])
   }

@@ -11,7 +11,6 @@ export default {
   component: SelectComponent,
 }
 
-
 export type regionType = 0 | 1 | 2 | 3
 
 export type citiesType = {
@@ -35,6 +34,9 @@ const cities: citiesType[] = [
   { id: v1(), city: "London", population: 1082, region: 1 },
   { id: v1(), city: "Manchester", population: 102, region: 3 },
 ]
+
+const SelectComponentMemo = React.memo(SelectComponent) //не перезапускает перерендер, если не произошло изменений!
+
 
 
 export const SelectsThree = () => {
@@ -125,15 +127,15 @@ export const SelectsThree = () => {
       </Box >
       <Box sx={{ p: "10px" }}> All cities: {mappedCities().length} {mappedCities()} </Box>
       <Box sx={{ display: "flex", alignItems: "center", margin: "10px" }}>
-        <SelectComponent value={m} onChange={onChangeHandlerCity} label="hasMletter"
+        <SelectComponentMemo value={m} onChange={onChangeHandlerCity} label="hasMletter"
           name="city" items={itemsRenderInSelect("city")} />
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", margin: "10px" }}>
-        <SelectComponent value={population ? population.toString() : ""} onChange={onChangeHandlerPopulation} label="population"
+        <SelectComponentMemo value={population ? population.toString() : ""} onChange={onChangeHandlerPopulation} label="population"
           name="population" items={itemsRenderInSelect("population")} />
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", margin: "10px" }}>
-        <SelectComponent value={region ? region.toString() : ""} onChange={onChangeHandlerRegion} label="region"
+        <SelectComponentMemo value={region ? region.toString() : ""} onChange={onChangeHandlerRegion} label="region"
           name="region" items={itemsRenderInSelect("region")} />
       </Box>
     </>
