@@ -45,3 +45,38 @@ button {
 .red {
   background-color: red;
 }
+
+.clock {
+  background: #404040;
+  border-radius: 50%;
+  box-shadow: inset rgba(255, 255, 255, 0.2) 8px 8px 18px 5px,
+    inset rgba(0, 0, 0, 0.5) -8px -8px 18px 5px;
+  height: 155px;
+  margin: 20px;
+  width: 155px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/* .clock > div > span {
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+} */
+
+
+.time {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.time > div {
+  width: 2px;
+  height: 33%;
+  background-color: red;
+  border-radius: 2px;
+  position: absolute;
+  top: 51px;
+}
