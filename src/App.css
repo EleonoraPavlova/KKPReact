@@ -46,6 +46,7 @@ button {
   background-color: red;
 }
 
+/* 
 .clock {
   background: #404040;
   border-radius: 50%;
@@ -57,26 +58,4 @@ button {
   justify-content: center;
   align-items: center;
   display: flex;
-}
-
-/* .clock > div > span {
-  color: white;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
 } */
-
-
-.time {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: white;
-}
-
-.time > div {
-  width: 2px;
-  height: 33%;
-  background-color: red;
-  border-radius: 2px;
-  position: absolute;
-  top: 51px;
-}
