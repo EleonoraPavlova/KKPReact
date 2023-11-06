@@ -73,6 +73,7 @@ export const SelectsThree = () => {
       const filteredCities = citiesFilters(activeFilter);
       setDrawCities(filteredCities);
     }
+    return () => setDrawCities(cities)
   }, [activeFilter, m, region, population])
 
   const mappedCities = useMemo(() => {
